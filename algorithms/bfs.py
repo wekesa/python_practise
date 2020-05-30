@@ -36,12 +36,12 @@ class Graph:
 
 if __name__ == '__main__':
     g = Graph()
-    g.addEdge(0, 1)
-    g.addEdge(0, 2)
-    g.addEdge(1, 2)
-    g.addEdge(2, 0)
-    g.addEdge(2, 3)
-    g.addEdge(3, 3)
+    g.add_edge(0, 1)
+    g.add_edge(0, 2)
+    g.add_edge(1, 2)
+    g.add_edge(2, 0)
+    g.add_edge(2, 3)
+    g.add_edge(3, 3)
 
     print("Following is Breadth First Traversal"
           " (starting from vertex 2)")
