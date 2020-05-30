@@ -2,7 +2,8 @@
 # With a queue the least recently added item is removed first.
 # A good example of queue is any queue of consumers for a resource where the consumer that came first is served first.
 # Operations associated with queue are:
-#    - Enqueue: Adds an item to the queue. If the queue is full, then it is said to be an Overflow condition – Time Complexity : O(1)
+#    - Enqueue: Adds an item to the queue. If the queue is full, then it is said to be an Overflow condition –
+#      Time Complexity : O(1)
 #    - Dequeue: Removes an item from the queue. The items are popped in the same order in which they are pushed.
 #      If the queue is empty, then it is said to be an Underflow condition – Time Complexity : O(1)
 #    - Front: Get the front item from queue – Time Complexity : O(1)
@@ -39,9 +40,20 @@ def queue_using_deque():
 
     print(queue)
 
+
 def queue_using_queue_module():
     queue = Queue(maxsize=3)
-    
+    queue.put('a')
+    queue.put('b')
+    queue.put('c')
+    print(queue)
+    # Remove an item
+    queue.get()
+    queue.get()
+    print(queue)
+
 
 if __name__ == '__main__':
     queue_using_list()
+    queue_using_deque()
+    queue_using_queue_module()
