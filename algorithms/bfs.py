@@ -23,7 +23,6 @@ class Graph:
             # queue and print it
             s = queue.pop(0)
             print(s, end=" ")
-
             # Get all adjacent vertices of the
             # de-queued vertex s. If a adjacent
             # has not been visited, then mark it
