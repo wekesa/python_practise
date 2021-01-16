@@ -5,7 +5,7 @@ from collections import defaultdict
 
 class Graph:
     def __init__(self):
-        self.graph = defaultdict(list)
+        self.graph = defaultdict()
 
     def add_edge(self, u, v):
         self.graph[u].append(v)
@@ -22,7 +22,7 @@ class Graph:
             # Dequeue a vertex from
             # queue and print it
             s = queue.pop(0)
-            print(s, end=" ")
+            print(s, " ")
             # Get all adjacent vertices of the
             # de-queued vertex s. If a adjacent
             # has not been visited, then mark it

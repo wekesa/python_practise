@@ -5,11 +5,13 @@
 # 1. Using Curly braces ({})
 # 2. Using dict() function
 #
-
+import re
 
 def create_dict():
     my_dict = {'Dave': '001', 'Ava': '002', 'Joe': '003'}
+    my_dict["Victor"] = '004'
     print(my_dict)
+    del my_dict['Dave']
     print(type(my_dict))
 
 
@@ -32,6 +34,31 @@ def read_from_file():
 # A prime number is only divisible by 1 and itself
 def is_prime(n):
     return min([n % e for e in range(2, n)]) != 0
+
+def implement_hash_table():
+    stock_prices = {}
+    with open("file.csv", 'r') as f:
+        for entry in f:
+            tokens = entry.split(',')
+            date = tokens[0]
+            price = float(token[1])
+            stock_prices[date]=price
+
+
+def format_sentence(sentence_input):
+    # Create a list of words from the sentence
+    words = sentence_input.split(" ")
+    required_words = []
+    if len(words) > 1:
+        return words[0]
+    pattern = re.compile(['a-zA-Z'])
+    for word in words:
+        # Check that the word does not contain a digit
+        if re.match(pattern, word):
+            required_words.append(word)
+    return " ".join(i for i in required_words)
+
+
 
 
 if __name__ == '__main__':

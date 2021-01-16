@@ -15,6 +15,23 @@ def continuous_starting_sequence(words):
     return chain
 
 
+import re
+
+
+# Function to remove words with digits
+def remove_words_with_digits(sentence):
+    if sentence == "":
+        return sentence
+    words_list = sentence.split(" ")
+    words_without_digits = []
+    for word in words_list:
+        if not re.search(r'\d', word):
+            words_without_digits.append(word)
+    return " ".join(i for i in words_without_digits)
+
+
+# Driver Code
 if __name__ == '__main__':
     best = max((continuous_starting_sequence(seq) for seq in permutations(words)), key=len)
     print(best)
+    print(remove_words_with_digits("Kenya premier legue2"))
