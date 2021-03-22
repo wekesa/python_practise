@@ -73,3 +73,22 @@ class Stack:
             return ("No element in the Stack")
         else:
             return self.stack.pop()
+
+
+def create_stack():
+    stack = []
+    return stack
+
+def check_empty(stack):
+    return len(stack) == 0
+
+# Adding an item
+def push(stack, item):
+    stack.append(item)
+    print ("pushed item : " + item)
+
+
+def pop(stack):
+    if(check_empty()):
+        return "stack is empty"
+    return stack.pop()

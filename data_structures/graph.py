@@ -95,3 +95,20 @@ def remove_digits(sentence):
     :return:
     """
     return ''.join(i for i in sentence if not i.isdigit())
+
+
+def fibonacci_bottom_up(n):
+    bottom_up = [None] * n+1
+    bottom_up[1] = 1
+    bottom_up[2] = 1
+    for i in range(3, n+1):
+        bottom_up[i] = bottom_up[i-1] + bottom_up[i-2]
+    return bottom_up[n]
+
+def get_sums_indices(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        if target - num in seen:
+            return [seen[num], i]
+        else:
+            seen[num] = i

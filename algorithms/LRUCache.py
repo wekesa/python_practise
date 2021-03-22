@@ -47,3 +47,64 @@ if __name__ == '__main__':
     print(cache.cache)
 
 # Time Complexity O(1)
+
+
+
+"""
+- Another elegant solution for LRU cache
+- It defines the policy to evict elements from a cache to make room for new elements when the cache is full,
+- Meaning it discards the least recently used item first
+ - Example: we cache elements: 1,2,3,4
+           - We need to cache 5: 2,3,4,5
+ - Example 2: we cache 2: 3,4,5,2
+ - 
+ Solution Hint:
+ - Doubly linked list
+ - Hashing
+ - Think about evictions
+ 
+"""
+class Node:
+    def __init__(self, data, next = None):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self, head=None):
+        self.head = None
+
+class LRUCache:
+    def __init_(self, capacity):
+        self.capacity = capacity
+        self.cache = {}
+        self.cache_vals = LinkedList()
+
+    def set(self, key, value):
+        node = self.get(value)
+        if node is None:
+            if self.cache_vals.size >=self.capacity:
+                self.cache_vals.insert_at_tail(value)
+                self.cache.add(value)
+                self.cache.remove(self.cache_vals.get_head().data)
+                self.cache_vals.remove_head()
+            else:
+                self.cache_vals.insert_at_tail(value)
+                self.cache.add(value)
+
+    def get(self, value):
+        if value not in self.cache:
+            return -1
+        else:
+            node = self.cache_vals.get_head()
+            while node is not None:
+                if node.data == value:
+                    return node
+                node = node.next
+
+    def get_cache(self):
+        res = ""
+        node = self.cache_vals.head
+        while node is not None:
+            res += "(" + str(node.key) + ":" + str(node.data) + ")"
+            node = node.next
+        return res

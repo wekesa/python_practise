@@ -54,3 +54,120 @@ root.insert(19)
 
 
 root.PrintTree()
+
+
+# Checking if a binary tree is CalculateHeight balanced in Python
+
+
+# CreateNode creation
+class CreateNode:
+
+    def __init__(self, item):
+        self.item = item
+        self.left = self.right = None
+
+
+# Calculate height
+class CalculateHeight:
+    def __init__(self):
+        self.CalculateHeight = 0
+
+
+# Check height balance
+def is_height_balanced(root, CalculateHeight):
+
+    left_height = CalculateHeight()
+    right_height = CalculateHeight()
+
+    if root is None:
+        return True
+
+    l = is_height_balanced(root.left, left_height)
+    r = is_height_balanced(root.right, right_height)
+
+    CalculateHeight.CalculateHeight = max(
+        left_height.CalculateHeight, right_height.CalculateHeight) + 1
+
+    if abs(left_height.CalculateHeight - right_height.CalculateHeight) <= 1:
+        return l and r
+
+    return False
+
+
+CalculateHeight = CalculateHeight()
+
+root = CreateNode(1)
+root.left = CreateNode(2)
+root.right = CreateNode(3)
+root.left.left = CreateNode(4)
+root.left.right = CreateNode(5)
+
+if is_height_balanced(root, CalculateHeight):
+    print('The tree is balanced')
+else:
+    print('The tree is not balanced')
+
+
+
+
+
+
+
+
+"""
+- Validate whether a tree is a BST or not
+- Is a node based binary tree data structure which has the following properties
+ - The left subtree of a node contains only nodes with keys greater than the node's key.
+ - The right subtree of a node contains only nodes with keys greater than the node's key.
+ - Both the left and the right subtrees must also be binary search trees.
+ - Each node of the tree has a distinct key
+ -           4
+           /   \
+        2        5
+        / \       
+       1   3
+       
+
+- One approach to determine whether a tree is bst or not is to use in-order traversal
+- left - root - right
+"""
+
+# Helper class to create a node with given data and None left and right nodes
+class NewNode:
+    # Constructor to create the node
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+
+def isBSTUtil(root, prev):
+    # Traverse the tree in order and keep track of the previous node
+    if(root != None):
+        if(isBSTUtil(root.left, prev) == False):
+            return False
+
+        # Allow only distinct value nodes
+        if (prev != None and root.data <=prev.data):
+            return False
+        prev = root
+        return isBSTUtil(root.right, prev)
+    return True
+
+def isBST(root):
+    prev = None
+    return isBSTUtil(root, prev)
+
+
+root = Node(3)
+root.left = Node(2)
+root.right = Node(5)
+root.right.left = Node(1)
+root.right.right = Node(4)
+# root.right.left.left = Node(40)
+
+if (isBST(root) == None):
+    print("Is BST")
+else:
+    print("Not a BST")

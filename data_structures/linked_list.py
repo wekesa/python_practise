@@ -51,3 +51,84 @@ if __name__ == '__main__':
     second.next = third
 
     linked_list.print_list()
+
+
+"""
+- A linked list is a sequence of data elements which are connected via links. Each data element contains a connection to 
+another data element in form of a pointer. Python does not have linked lists in its standard library. 
+- I will implement it using the concept of nodes. Implement a node class 
+- Singly linked lists.. In this type of data structure these is only one link between any two data elements.
+- 
+
+- Creating a linked list 
+"""
+
+class Node:
+    def __init__(self, dataval=None):
+        self.dataval = dataval
+        self.nextval = None
+
+
+class SLinkedList:
+    def __init__(self):
+        self.headval = None
+
+    def listprint(self):
+        printval = self.headval
+        while printval is not None:
+            print(printval.dataval)
+            printval = printval.nextval
+
+    def insert_begging(self, newdata):
+        new_node = Node(newdata)
+        new_node.nextval = self.headval
+        self.headval = new_node
+
+    def insert_end(self, data):
+        new_node = Node(data)
+        if self.headval is None:
+            self.headval = new_node
+            return
+        last = self.headval
+        while(last.nextval):
+            last = last.nextval
+        last.nextval = new_node
+
+
+
+list1 = SLinkedList()
+list1.headval = Node("Mon")
+e2 = Node("Tue")
+e3 = Node("Wed")
+
+# Link first Node to second node
+list1.headval.nextval = e2
+
+# Link second Node to third node
+e2.nextval = e3
+
+
+
+# Merge two sorted lists
+class ListNode:
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+
+def merge_list(l1, l2):
+    dummy = ListNode()
+    tail = dummy
+
+    while l1 and l2:
+        if l1.data < l2.data:
+            tail.next = l1
+            l1 = l1.next
+        else:
+            tail.next = l2
+            l2 = l2.next
+        tail = tail.next
+    if l1:
+        tail.next = l1
+    else:
+        tail.next = l2
+    return dummy.next

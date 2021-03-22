@@ -57,3 +57,30 @@ if __name__ == '__main__':
     queue_using_list()
     queue_using_deque()
     queue_using_queue_module()
+
+
+# A queue is a data structure that operates in a first in first out manner (FIFO)
+# Operations
+# - Enqueue
+# - Dequeue
+# - IsFull
+# - Peek
+# - IsEmpty
+
+# Queue Operations
+# - FRONT
+# - REAR
+
+class Queue:
+    def __init__(self):
+        self.queue = []
+
+    def enqueue(self, item):
+        self.queue.append(item)
+
+    def dequeue(self):
+        if len(self.queue) < 1:
+            return None
+        return self.queue.pop(0)
+
+

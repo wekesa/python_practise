@@ -164,3 +164,59 @@ def minCoins(coins, m, V):
                 res = sub_res + 1
 
     return res
+
+
+"""
+- Longest Consecutive Subsequence
+- Given an array of integers, find the longest sub-sequence such that elements in the sub sequence 
+  are consecutive integers, the consecutive numbers can be in any order
+  
+  - Example Input: arr[] = {1, 9, 3, 10, 4, 20, 2}
+   - Output: 4 
+"""
+
+def longest_subsequence(L):
+    ans = 0
+    count = 0
+
+    # Sort the array first
+    L.sort()
+
+    v = []
+
+    v.append(L[0])
+
+    # Insert repeated elements only once in the list
+    for i in range(n):
+        if (L[i] != L[i-1]):
+            v.append(L[i])
+
+    # Find the maximum length by traversing the list
+    for i in range(len(L)):
+        if(i>0 and v[i] == v[i-1] + 1):
+            count += 1
+        else:
+            count = 1
+        ans = max(ans, count)
+    return ans
+
+
+from sets import Set
+
+def find_the_longest_subseq(arr, n):
+    s = Set()
+    ans = 0
+
+    # Hash all array elements
+    for ele in arr:
+        s.add(ele)
+
+    # Check each possible sequence from start then update optimal length
+    for i in range(n):
+        if (arr[i] - 1) not in s:
+            j = arr[i]
+            while (j in s):
+                j += 1
+
+            ans = max(ans, j-arr[i])
+    return ans
