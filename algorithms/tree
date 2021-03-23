@@ -116,7 +116,7 @@ else:
 
 """
 - Validate whether a tree is a BST or not
-- Is a node based binary tree data structure which has the following properties
+- Is a node based binary search tree data structure which has the following properties
  - The left subtree of a node contains only nodes with keys greater than the node's key.
  - The right subtree of a node contains only nodes with keys greater than the node's key.
  - Both the left and the right subtrees must also be binary search trees.
@@ -171,3 +171,22 @@ if (isBST(root) == None):
     print("Is BST")
 else:
     print("Not a BST")
+
+
+
+def lca(root, n1, n2):
+    if root is None:
+        return None
+    if root is n1 or root is n2:
+        return root
+    left = lca(root.left, n1, n2)
+    right = lca(root.right, n1,n2)
+
+    if left is not None and right is not None:
+        return root
+    if left is None and right is None:
+        return None
+    if left is not None:
+        return left.data
+    else:
+        return right.data

@@ -51,7 +51,7 @@ i = 0
 # Printing out the shortest distance from source to each vertex
 
 for distance in visited_and_distance:
-    print("The shortest distance of ", chr(ord('a')) + i, " from the source vertex a is: ", distance[1]):
+    print("The shortest distance of ", chr(ord('a')) + i, " from the source vertex a is: ", distance[1])
     i += 1
 
 

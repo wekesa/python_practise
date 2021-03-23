@@ -38,11 +38,56 @@ class MinHeap:
     def parent(self, pos):
         return pos // 2
 
+    # Function to return the position of the left child of a given node currently at position pos
     def left_child(self, pos):
         return pos * 2
 
+    # Function to return the position of the right child for a node currently in position pos
     def right_child(self, pos):
         return pos * 2 + 1
+
+    # Function that returns true if the  passed node is a leaf node
+    def is_leaf_node(self, pos):
+        if pos >= (self.size // 2) and pos <= self.size:
+            return True
+
+    def swap(self, fpos, spos):
+        self.Heap[fpos], self.Heap[spos] = self.Heap[spos], self.Heap[fpos]
+
+
+    def insert(self, element):
+        if self.size >= self.maxsize:
+            return
+        self.size +=1
+        self.Heap[self.size] = element
+        current = self.size
+
+        while self.Heap[current] < self.Heap[self.parent(current)]:
+            self.swap(current, self.parent(current))
+            current = self.parent(current)
+
+    # Function to heapify the node at pos
+    def minHeapify(self, pos):
+
+        # If the node is a non-leaf node and greater
+        # than any of its child
+        if not self.isLeaf(pos):
+            if (self.Heap[pos] > self.Heap[self.leftChild(pos)] or
+                    self.Heap[pos] > self.Heap[self.rightChild(pos)]):
+
+                # Swap with the left child and heapify
+                # the left child
+                if self.Heap[self.leftChild(pos)] < self.Heap[self.rightChild(pos)]:
+                    self.swap(pos, self.leftChild(pos))
+                    self.minHeapify(self.leftChild(pos))
+
+                # Swap with the right child and heapify
+                # the right child
+                else:
+                    self.swap(pos, self.rightChild(pos))
+                    self.minHeapify(self.rightChild(pos))
+
+
 
 
 
